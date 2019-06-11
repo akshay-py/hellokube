@@ -1,8 +1,11 @@
 package com.akshay.demo.controller;
 
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,8 @@ import com.akshay.demo.config.HelloConfig;
 public class HelloworldController {
 	@Autowired
 	HelloConfig config;
+	@Autowired
+	DataSource datasource;
 	
 	@GetMapping("/hello")
     public Collection<String> sayHello() {
@@ -24,6 +29,13 @@ public class HelloworldController {
 	
 	@GetMapping("/hello/message")
 	public String sayHelloMessage() {
-		return config.getMessage();
+		String returnMessage = null;
+		try {
+			returnMessage = config.getMessage() + datasource.getConnection().toString();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return returnMessage;
 	}
 }
