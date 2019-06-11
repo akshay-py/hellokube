@@ -4,11 +4,14 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloworldController {
+	@Value("${hello.message}")
+	String message;
 	
 	@GetMapping("/hello")
     public Collection<String> sayHello() {
@@ -16,4 +19,9 @@ public class HelloworldController {
           .mapToObj(i -> "Hello number " + i)
           .collect(Collectors.toList());
     }
+	
+	@GetMapping("/hello/message")
+	public String sayHelloMessage() {
+		return message;
+	}
 }
