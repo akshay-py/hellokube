@@ -13,6 +13,7 @@
 	<artifactId>helloworld</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	<name>helloworld</name>
 	<description>Hello World</description>
 
 	<properties>
@@ -78,10 +79,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<!-- this will get rid of version info from war file name -->
-					<finalName>${project.artifactId}</finalName>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
