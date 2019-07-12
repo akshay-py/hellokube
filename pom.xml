@@ -13,7 +13,6 @@
 	<artifactId>helloworld</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>helloworld</name>
 	<description>Hello World</description>
 
 	<properties>
